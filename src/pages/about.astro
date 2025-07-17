@@ -1,18 +1,26 @@
 ---
+import '../styles/global.css';
+
 const pageTitle = 'Обо мне';
 
 const identity = {
-  firstName: "Сара",
-  country: "Канада",
-  occupation: "Технический писатель",
-  hobbies: ["фотография", "наблюдение за птицами", "бейсбол"],
+  firstName: "Егор",
+  lastName: "Романов",
+  age: 21,
+  country: "Россия",
+  occupation: "Frontend-разработчик, UX/UI",
+  hobbies: ["LEGO", "Видео-игры", "Волейбол", "Дизайн", "Спорт, походы, страйкбол"],
 };
 
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Написание документации"];
+const skills = ["HTML", "CSS", "SCSS", "Git", "JavaScript", "React", "Astro", "11ty"];
 
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = 'navy';
+const fontWeight = 700;
+const textCase = 'uppercase';
 ---
 
 <html lang="en">
@@ -22,6 +30,17 @@ const goal = 3;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{ pageTitle }</title>
+        <style define:vars={{skillColor, fontWeight, textCase}}>
+            h1 {
+              color: purple;
+              font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
 	</head>
 	<body>
 		<body>
@@ -38,7 +57,8 @@ const goal = 3;
 
             <p>Несколько фактов обо мне:</p>
             <ul>
-                <li>Меня зовут {identity.firstName}.</li>
+                <li>Меня зовут {identity.firstName} {identity.lastName}.</li>
+                <li>Мне {identity.age} год.</li>
                 <li>Моя страна — {identity.country}, а род занятий — {identity.occupation}.</li>
                 {identity.hobbies.length >= 2 &&
                     <li>Два моих увлечения: {identity.hobbies[0]} и {identity.hobbies[1]}</li>
@@ -47,7 +67,7 @@ const goal = 3;
 
             <p>Мои навыки:</p>
             <ul>
-                {skills.map((skill) => <li>{skill}</li>)}
+                {skills.map((skill) => <li class="skill">{skill}</li>)}
             </ul>
 
             {happy && <p>Я рад(а) изучать Astro!</p>}
