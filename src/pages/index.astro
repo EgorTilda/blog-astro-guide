@@ -1,6 +1,8 @@
 ---
-import '../styles/global.css'
-const pageTitle = 'Cайт-блог на Astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+const pageTitle = 'Мой первый сайт-блог на Astro';
 ---
 
 <html lang="en">
@@ -12,11 +14,9 @@ const pageTitle = 'Cайт-блог на Astro';
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<a href="/">Главная</a>
-        <a href="/about/">О сайте</a>
-		<a href="/blog/">Блог</a>
-
-		<h1>Мой первый сайт-блог на Astro</h1>
+		<Navigation />
+		<h1>{pageTitle}</h1>
 		<p>Личный блог, посвященный изучению Astro</p>
+		<Footer />
 	</body>
 </html>
